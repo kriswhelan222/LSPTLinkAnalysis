@@ -131,7 +131,37 @@ def pagerank(G, alpha=0.85, personalization=None,
     raise NetworkXError('pagerank: power iteration failed to converge '
                         'in %d iterations.' % max_iter)
 
-def insert():
+
+"""
+Inert the given input dictionary into the web graph
+
+Parameters 
+---------- 
+G : graph 
+  A NetworkX graph.  Undirected graphs will be converted to a directed 
+  graph with two directed edges for each undirected edge. 
+
+webURLs: dictionary
+  A dictionary with key as links and value as all outlinks.
+
+
+"""
+def insert(G, webURLs):
+    # loop through all the input
+    for URL1, outlinks in webURLs:
+        # if the given URL is not in the graph, add it
+        if URL1 not in G.node:
+            G.add_node(URL1)
+
+        # Loop though all the outlinks from the given URL1
+        for URL2 in outlinks:
+            # If the connected outlink is not in the graph
+            if URL2 not in G.node:
+                G.add_node(URL2)
+            G.add_edge(URL1, URL2)
+    print("Everything is successfully inserted in the WebGraph.")
+
+
 
 def main():
     """
