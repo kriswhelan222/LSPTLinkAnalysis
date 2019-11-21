@@ -164,20 +164,29 @@ def insert(webURLs):
             G.add_edge(URL1, URL2)
     print("Everything is successfully inserted in the WebGraph.")
 
-
+def update(webURLs):
+  
 """
 Run the pageRank algorithm and get results
 
 Parameters 
 ---------- 
-G : graph 
-  A NetworkX graph.  Undirected graphs will be converted to a directed 
-  graph with two directed edges for each undirected edge.
+URLlist : list of URLs 
+  A list which user will input and get the sorted dictionary of the lists
 
 """
-def getRanking():
+def getRanking(URLlist):
     pr = pagerank(G,0.4)
     
+    results = dict()
+    # Get all the rankings of the given URL list
+    for URL in URLlist:
+      # if the link is in the graph, provide the rank score
+      if URL in pr.keys():
+        results[URL] = pr[URL]
+      #  if the link is not in the graph, provide 0
+      else:
+        results[URL] = 0
     # make a sorted array based on dictionary values. Descending order
     # Currently returns all nodes in the graph
-    return sorted(pr.items(), key=lambda pr: pr[1], reverse = True)
+    return sorted(results.items(), key=lambda results: results[1], reverse = True)

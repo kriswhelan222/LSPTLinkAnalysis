@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/getRanking')
 def hello_world():
-    return linkAnalysis.getRanking()
+    return linkAnalysis.getRanking(URLlist)
 
 @app.route('/insert/', methods=["GET","POST"])
 def login_page():
