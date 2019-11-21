@@ -162,51 +162,19 @@ def insert(G, webURLs):
     print("Everything is successfully inserted in the WebGraph.")
 
 
+"""
+Run the pageRank algorithm and get results
 
-def main():
-    """
-    Input is a dictionary
-        {
-            {
-                URL1: {outlink1,outlink2,...,outlinkn},
-                URL2: {outlink1,outlink2,...,outlinkn},
-                URL3: {outlink1,outlink2,...,outlinkn},
-                .
-                .
-                .
-                URLn: {outlink1,outlink2,...,outlinkn},
-            }
-        }
-    """
-    """
-    filename = rs.OpenFileName("Open JSON File", JSONfile)
+Parameters 
+---------- 
+G : graph 
+  A NetworkX graph.  Undirected graphs will be converted to a directed 
+  graph with two directed edges for each undirected edge.
 
-    #Read JSON data into the datastore variable
-    if filename:
-        with open(filename, 'r') as f:
-            datastore = json.load(f)
-
-    #Use the new datastore datastructure
-    print datastore
-    """
-
-    G = nx.DiGraph() # Make empty graph
-    G.add_node('RPI Home Page')
-    G.add_node('RPI Course Catalog')
-    G.add_node('RPI Bookstore')
-    
-    edges = [('RPI Home Page', 'RPI Course Catalog'), ('RPI Home Page', 'RPI Bookstore'), ('RPI Course Catalog', 'RPI Bookstore')]
-    G.add_edges_from(edges)
-
-    # Run pageRank
-    # Runs the version in this code. nx.pagrank will run the built in library's
+"""
+def runPageRank(G):
     pr = pagerank(G,0.4)
-    #pr = nx.pagerank(G,0.4)
-
+    
     # make a sorted array based on dictionary values. Descending order
-    sorted_ranks = sorted(pr.items(), key=lambda pr: pr[1], reverse = True)
-
-    print("Top pages based on PageRank")
-    for i in range(len(sorted_ranks)):
-        print(sorted_ranks[i])
-main()
+    # Currently returns all nodes in the graph
+    return sorted(pr.items(), key=lambda pr: pr[1], reverse = True)
