@@ -1,5 +1,8 @@
 import networkx as nx
 
+#Global variable to represent the graph
+G = nx.DiGraph()
+
 """Return the PageRank of the nodes in the graph. 
 
 PageRank computes a ranking of the nodes in the graph G based on 
@@ -146,7 +149,7 @@ webURLs: dictionary
 
 
 """
-def insert(G, webURLs):
+def insert(webURLs):
     # loop through all the input
     for URL1, outlinks in webURLs:
         # if the given URL is not in the graph, add it
@@ -172,7 +175,7 @@ G : graph
   graph with two directed edges for each undirected edge.
 
 """
-def runPageRank(G):
+def getRanking():
     pr = pagerank(G,0.4)
     
     # make a sorted array based on dictionary values. Descending order

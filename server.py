@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 @app.route('/getRanking')
 def hello_world():
-    return linkAnalysis.getRanking(linkAnalysis.getGraph())
+    return linkAnalysis.getRanking()
 
 @app.route('/insert/', methods=["GET","POST"])
 def login_page():
 	
     jsonObj = request.form['list']
-    linkAnalysis.insert(linkAnalysis.getGraph(), jsonObj)
+    linkAnalysis.insert(jsonObj)
