@@ -140,13 +140,8 @@ Inert the given input dictionary into the web graph
 
 Parameters 
 ---------- 
-G : graph 
-	A NetworkX graph.  Undirected graphs will be converted to a directed 
-	graph with two directed edges for each undirected edge. 
-
 webURLs: dictionary
 	A dictionary with key as links and value as all outlinks.
-
 
 """
 
@@ -169,7 +164,7 @@ def insert(webURLs):
 			G.add_edge(URL1, URL2)
 	print("Everything is successfully inserted in the WebGraph.")
 
-	
+
 """
 Run the pageRank algorithm and get results
 
@@ -177,9 +172,15 @@ Parameters
 ---------- 
 URLlist : list of URLs 
 	A list which user will input and get the sorted dictionary of the lists
+	Default set as all nodes in the graph
+
+Returns
+-------
+result : list
+	A sorted dictionary with (URLID, rank score) pair
 
 """
-def getRanking(URLlist):
+def getRanking(URLlist=G.nodes):
 		pr = pagerank(G,0.4)
 		
 		results = dict()
