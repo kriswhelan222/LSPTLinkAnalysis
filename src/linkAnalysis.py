@@ -185,7 +185,7 @@ def delete(URLList):
 				G.remove_edge(URL, to_URL)
 			G.remove_node(URL)
 
-	print("All URLs are successfully remved from the WebGraph")
+	print("All URLs are successfully removed from the WebGraph")
 
 
 
