@@ -166,6 +166,30 @@ def insert(webURLs):
 
 
 """
+Delete the given input list of URLs into the web graph
+
+Parameters 
+---------- 
+URLList: list
+	A list of URLids which no longer valid in the graph
+
+"""
+
+def delete(URLList):
+	for URL in URLList:
+		if URL in G.nodes:
+			# Remove all connected edges from and to this URL
+			for from_URL in G.predecessors(URL):
+				G.remove_edge(from_URL, URL)
+			for to_URL in G.successors(URL):
+				G.remove_edge(URL, to_URL)
+			G.remove_node(URL)
+
+	print("All URLs are successfully remved from the WebGraph")
+
+
+
+"""
 Run the pageRank algorithm and get results
 
 Parameters 

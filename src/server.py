@@ -15,5 +15,11 @@ def insert():
     linkAnalysis.insert(jsonObj)
 
 
+@app.route('/delete', methods=["DELETE"])
+def delete():
+    jsonObj = request.form['list']
+    linkAnalysis.delete(jsonObj)
+
+
 if __name__ == '__main__':
     app.run()
