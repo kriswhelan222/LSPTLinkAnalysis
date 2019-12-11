@@ -8,11 +8,12 @@ app = Flask(__name__)
 def getRanking():
     return linkAnalysis.getRanking(URLlist)
 
-@app.route('/insert', methods=["GET","POST"])
+
+@app.route('/insert', methods=["PUT"])
 def insert():
-	
-    jsonObj = request.form['list']
+    jsonObj = request.form.to_dict()
     linkAnalysis.insert(jsonObj)
+
 
 if __name__ == '__main__':
     app.run()
