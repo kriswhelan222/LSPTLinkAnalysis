@@ -5,11 +5,14 @@ import linkAnalysis
 app = Flask(__name__)
 
 @app.route('/getRanking')
-def hello_world():
+def getRanking():
     return linkAnalysis.getRanking(URLlist)
 
-@app.route('/insert/', methods=["GET","POST"])
-def login_page():
+@app.route('/insert', methods=["GET","POST"])
+def insert():
 	
     jsonObj = request.form['list']
     linkAnalysis.insert(jsonObj)
+
+if __name__ == '__main__':
+    app.run()
